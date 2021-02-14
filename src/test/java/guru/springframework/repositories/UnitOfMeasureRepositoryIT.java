@@ -23,6 +23,7 @@ public class UnitOfMeasureRepositoryIT {
 
     @Test
     public void findByDescription() {
+        System.out.println("INTEGRATIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOON TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTT!!!!!!!!!!!!!");
         Optional<UnitOfMeasure> teaspoon = unitOfMeasureRepository.findByDescription("Teaspoon");
         Assert.assertEquals("Teaspoon", teaspoon.get().getDescription());
     }
