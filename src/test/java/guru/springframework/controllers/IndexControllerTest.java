@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,7 +29,14 @@ public class IndexControllerTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        Mockito.when(recipeService.getRecipes()).thenReturn(Set.of(new Recipe(), new Recipe()));
+        Set<Recipe> recipes = new HashSet<>();
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        recipes.add(recipe);
+        recipe = new Recipe();
+        recipe.setId(2L);
+        recipes.add(recipe);
+        Mockito.when(recipeService.getRecipes()).thenReturn(recipes);
     }
 
     @Test
