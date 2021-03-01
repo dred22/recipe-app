@@ -70,27 +70,25 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <formats>
+                        <format>html</format>
+                        <format>xml</format>
+                    </formats>
+                    <check />
+                </configuration>
+            </plugin>
+			<!--fix for issue with JDK 1.8 181 see: https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.20</version>
+				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<includes>
-						<include>**/*IT.java</include>
-					</includes>
-					<additionalClasspathElements>
-						<additionalClasspathElement>${basedir}/target/classes</additionalClasspathElement>
-					</additionalClasspathElements>
-					<parallel>none</parallel>
+					<useSystemClassLoader>false</useSystemClassLoader>
 				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
