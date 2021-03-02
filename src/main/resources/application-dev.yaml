@@ -3,6 +3,8 @@ spring:
     url: jdbc:mysql://10.10.5.2:3306/sfg_dev
     username: sfg_dev_user
     password: guru
+    platform: mysql
+    #initialization-mode: always #need to load data-h2.sql and maybe ddl-auto: create
   jpa:
     hibernate:
       ddl-auto: validate
